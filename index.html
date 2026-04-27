@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洪善君 · 善人會會長</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f2eb;
+    --gold: #b8923a;
+    --muted: #6b6658;
+    --line: rgba(26,26,24,0.12);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+
+  .header {
+    border-top: 2px solid var(--ink);
+    padding-top: 40px;
+    margin-bottom: 72px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .name em { color: var(--gold); font-style: normal; }
+
+  .title-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .title-line::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .title {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+  }
+
+  .nickname-badge {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 14px;
+    border: 1px solid var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+    margin: 48px 0;
+  }
+
+  .section {
+    margin-bottom: 64px;
+    animation: fadeUp 0.9s ease both;
+    animation-delay: 0.15s;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  .about-text strong {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .story-box {
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    margin-top: 32px;
+    background: rgba(184,146,58,0.05);
+  }
+
+  .story-box p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--muted);
+  }
+
+  .story-box p + p { margin-top: 16px; }
+
+  .story-box strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    animation: fadeUp 0.9s ease both;
+    animation-delay: 0.25s;
+  }
+
+  .value-item {
+    background: var(--paper);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+
+  .value-item:hover { background: #ede9df; }
+
+  .value-char {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .value-desc {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  .free-banner {
+    margin-top: 48px;
+    padding: 28px 32px;
+    border: 1.5px solid var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    animation: fadeUp 0.9s ease both;
+    animation-delay: 0.3s;
+  }
+
+  .free-big {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .free-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .free-text strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .cta-section {
+    margin-top: 64px;
+    text-align: center;
+    animation: fadeUp 0.9s ease both;
+    animation-delay: 0.35s;
+  }
+
+  .cta-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+
+  .cta-sub {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1.5px solid var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .cta-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .footer {
+    margin-top: 96px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeUp 0.9s ease both;
+    animation-delay: 0.45s;
+  }
+
+  .footer-name {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .footer-tag {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,24,0.6);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--paper);
+    border-top: 3px solid var(--gold);
+    padding: 48px 40px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .modal-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+
+  .modal-body {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .modal-body strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .modal-close {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 8px;
+  }
+
+  .modal-close:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <p class="header-label">善人會 · 創辦人</p>
+    <h1 class="name">洪<em>善</em>君</h1>
+    <div class="title-line">
+      <span class="title">善人會會長 · 結善緣推廣人</span>
+    </div>
+    <div>
+      <span class="nickname-badge">人稱「水屁」會長</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <p class="section-label">善人會的故事</p>
+    <p class="about-text">每一個善念，都有它荒唐的起點。</p>
+    <div class="story-box">
+      <p>
+        高中某個平凡的下午，洪善君在課堂上不小心放了一個響徹雲霄的水屁。那一聲，讓全班哄堂大笑，也讓「水屁」這個外號從此跟著他。
+      </p>
+      <p>
+        起初，他心中燃起一把怒火——憑什麼一個意外就定義了一個人？但憤怒慢慢冷卻之後，他卻意外地想通了一件事：<strong>如果大家都能以善意看待彼此的狼狽，這個世界會不會更溫柔一點？</strong>
+      </p>
+      <p>
+        就這樣，善人會誕生了。一個因為水屁而起，卻認真想讓人與人之間多一點善意的地方。加入我們的人，我們都叫他們——<strong>小水蛭</strong>。因為善意會黏人，而且會蔓延。
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <p class="section-label">善人會的核心</p>
+    <div class="values">
+      <div class="value-item">
+        <span class="value-char">善</span>
+        <p class="value-desc">以善為本<br>用心待人</p>
+      </div>
+      <div class="value-item">
+        <span class="value-char">緣</span>
+        <p class="value-desc">廣結善緣<br>互助共好</p>
+      </div>
+      <div class="value-item">
+        <span class="value-char">真</span>
+        <p class="value-desc">真誠交流<br>不設心防</p>
+      </div>
+      <div class="value-item">
+        <span class="value-char">行</span>
+        <p class="value-desc">知善即行<br>從我做起</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="free-banner">
+    <div class="free-big">免費</div>
+    <div class="free-text">
+      <strong>加入善人會，完全免費，無需會費</strong>
+      善意不應該有門檻。我們相信每個人都有行善的能力，不需要花一毛錢，只需要帶著一顆善心來。
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <p class="cta-text">
+      你也是善人嗎？<br>加入善人會，成為一隻光榮的小水蛭。
+    </p>
+    <p class="cta-sub">免費 · 無會費 · 只需一顆善心</p>
+    <button class="cta-btn" onclick="document.querySelector('.modal-overlay').classList.add('open')">
+      加入善人會
+    </button>
+  </div>
+
+  <footer class="footer">
+    <span class="footer-name">洪善君「水屁」· 善人會會長</span>
+    <span class="footer-tag">善人會 2025</span>
+  </footer>
+
+</div>
+
+<div class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <p class="modal-title">歡迎加入善人會 🙏</p>
+    <p class="modal-body">
+      恭喜你，即將成為一隻光榮的<strong>小水蛭</strong>！<br><br>
+      加入完全免費，無需任何會費。<br>請聯繫水屁會長洪善君，我們將為你開啟善人之旅。
+    </p>
+    <button class="modal-close" onclick="document.querySelector('.modal-overlay').classList.remove('open')">
+      關閉 ✕
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
